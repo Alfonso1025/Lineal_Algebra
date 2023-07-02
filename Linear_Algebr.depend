@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1688303323 source:c:\users\group\onedrive\documentos\c_programming\linear_algebr\main.cpp
+	<iostream>
+	"Matrix.h"
+
+1688307832 c:\users\group\onedrive\documentos\c_programming\linear_algebr\matrix.h
+
