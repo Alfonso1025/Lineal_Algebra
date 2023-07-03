@@ -1,81 +1,150 @@
-Class: Matrix
-The Matrix class contains the following member functions:
+# Linear Algebra
+# Matrix Class
 
-int** createMatrix(int rows, int columns)
-This function dynamically allocates memory for a matrix of the specified size and returns a pointer to the matrix.
+This is a C++ library for performing operations on matrices and vectors. It provides various methods for matrix manipulation, including matrix addition, subtraction, multiplication, and determinant calculation.
 
-Parameters:
+## Usage
 
-rows: The number of rows in the matrix.
-columns: The number of columns in the matrix.
-Returns:
+### Example: Matrix Multiplication
+Declare two statatic matrices and store the addresses of their first element in a pointer variable. Create an instance objetc of the 
+class Matrix and call multiplyMatrixes passing the two pointers as well as the dimmensions of each matrix as parameters. The method will return the result matrix which you can print by calling the printMatrix() method.
 
-A pointer to the dynamically allocated matrix.
-int** addMatrices(int* pointer1, int rows1, int cols1, int* pointer2, int rows2, int cols2)
-This function adds two matrices together and returns the result as a new matrix.
+```
+#include "Matrix.h"
 
-Parameters:
+int main() {
+    int matrixOne[ROWS1][COLUMNS1] = {{5, 2}, {-1, -3}};
+    int matrixTwo[ROWS2][COLUMNS2] = {{1, 0}, {2, 1}};
+    int* ptr1 = &matrixOne[0][0];
+    int* ptr2 = &matrixTwo[0][0];
 
-pointer1: Pointer to the first matrix.
-rows1: Number of rows in the first matrix.
-cols1: Number of columns in the first matrix.
-pointer2: Pointer to the second matrix.
-rows2: Number of rows in the second matrix.
-cols2: Number of columns in the second matrix.
-Returns:
+    Matrix matrix;
+    int** result = matrix.multiplyMatrixes(ptr1, ROWS1, COLUMNS1, ptr2, ROWS2, COLUMNS2);
+    matrix.printMatrix(result, ROWS1, COLUMNS2);
 
-A pointer to the resulting matrix, which is the sum of the two input matrices.
-int determinantTwoByTwo(int matrix[2][2])
-This function calculates the determinant of a 2x2 matrix and returns the result.
+    return 0;
+}
 
-Parameters:
+### Example: Matrix substraction 
+Declare two statatic matrices and store the addresses of their first element in a pointer variable. Create an instance objetc of the 
+class Matrix and call substractMatrices passing the two pointers as well as the dimmensions of each matrix as parameters. The method will return the result matrix which you can print by calling the printMatrix() method.
 
-matrix: The input 2x2 matrix.
-Returns:
+```
+#include "Matrix.h"
 
-The determinant of the input matrix.
-int dThreeByThree(int matrix[3][3])
-This function calculates the determinant of a 3x3 matrix and returns the result.
+int main() {
+    int matrixOne[ROWS1][COLUMNS1] = {{5, 2}, {-1, -3}};
+    int matrixTwo[ROWS2][COLUMNS2] = {{1, 0}, {2, 1}};
+    int* ptr1 = &matrixOne[0][0];
+    int* ptr2 = &matrixTwo[0][0];
 
-Parameters:
+    Matrix matrix;
+    int** result = matrix.substractMtrices(ptr1, ROWS1, COLUMNS1, ptr2, ROWS2, COLUMNS2);
+    matrix.printMatrix(result, ROWS1, COLUMNS2);
 
-matrix: The input 3x3 matrix.
-Returns:
+    return 0;
+}
+### Example: Matrix addition
+Declare two statatic matrices and store the addresses of their first element in a pointer variable. Create an instance objetc of the 
+class Matrix and call addMatrices passing the two pointers as well as the dimmensions of each matrix as parameters. The method will return the result matrix which you can print by calling the printMatrix() method.
 
-The determinant of the input matrix.
-int** subtractMatrices(int* pointer1, int rows1, int cols1, int* pointer2, int rows2, int cols2)
-This function subtracts one matrix from another and returns the result as a new matrix.
+```
+#include "Matrix.h"
 
-Parameters:
+int main() {
+    int matrixOne[ROWS1][COLUMNS1] = {{5, 2}, {-1, -3}};
+    int matrixTwo[ROWS2][COLUMNS2] = {{1, 0}, {2, 1}};
+    int* ptr1 = &matrixOne[0][0];
+    int* ptr2 = &matrixTwo[0][0];
 
-pointer1: Pointer to the first matrix.
-rows1: Number of rows in the first matrix.
-cols1: Number of columns in the first matrix.
-pointer2: Pointer to the second matrix.
-rows2: Number of rows in the second matrix.
-cols2: Number of columns in the second matrix.
-Returns:
+    Matrix matrix;
+    int** result = matrix.addMatrices(ptr1, ROWS1, COLUMNS1, ptr2, ROWS2, COLUMNS2);
+    matrix.printMatrix(result, ROWS1, COLUMNS2);
 
-A pointer to the resulting matrix, which is the difference between the two input matrices.
-int** multiplyMatrixes(int* pounter1, int rows1, int cols1, int* pointer2, int rows2, int cols2)
-This function multiplies two matrices together and returns the result as a new matrix.
+    return 0;
+}
+```
+### Example: Calculate the determinant of a 2x2 matrix
+Declare a static matrix of 2x2 dimmensions. Create an object of the Matrix class and call the determinantTwoByTwo method passing the matri as argument. The method returns 0 if the system of equations is linearly dependent, 1 if the syatem of equations is linearly independent
 
-Parameters:
+```
+#include "Matrix.h"
 
-pounter1: Pointer to the first matrix.
-rows1: Number of rows in the first matrix.
-cols1: Number of columns in the first matrix.
-pointer2: Pointer to the second matrix.
-rows2: Number of rows in the second matrix.
-cols2: Number of columns in the second matrix.
-Returns:
+int main() {
+    int matrixOne[ROWS1][COLUMNS1] = {{5, 2}, {-1, -3}};
+    
+    Matrix matrix;
+    int determinant = matrix.determinantTwoByTwo(matrixOne);
+    
+    return 0;
+}
+```
+### Example: Calculate the determinant of a 3x3 matrix
+Declare a static matrix of 3x3 dimmensions. Create an object of the Matrix class and call the determinantTwoByTwo method passing the matri as argument. The method returns 0 if the system of equations is linearly dependent, 1 if the syatem of equations is linearly independent
 
-A pointer to the resulting matrix, which is the product of the two input matrices.
-void printMatrix(int** matrix, int rows, int columns)
-This function prints a matrix to the standard output.
+```
+#include "Matrix.h"
 
-Parameters:
+int main() {
+    int matrixOne[ROWS1][COLUMNS1] = {{5, 2,1}, {-1, -3,4}, {5,12,43}};
+    
+    Matrix matrix;
+    int determinant = matrix.determinantThreeByThree(matrixOne);
+    
+    return 0;
+}
+```
+# Vector class
+#Usage
 
-matrix: Pointer to the matrix to be printed.
-rows: Number of rows in the matrix.
-columns: Number of columns in the matrix.
+### Example: Calculate dot product of two vectors
+Declare  two static arrays of same lenght. Create an object of the Vector class and call the calculateDotProduct method passing the vectors as argument. The method returns a double/scalar.
+
+```
+
+
+int main() {
+int LEN = 3;
+int vectorOne[LEN] = {3,1,2};
+int vectorTwo[LEN] = {1,4,3};
+Vector v(LEN);
+int result = v.calculateDotProduct(vectorOne, vectorTwo);
+std::cout<<"this is the dot product: "<<result<<std::endl;
+    
+    return 0;
+}
+```
+### Example: Calculate the Euclidean norm of a vector
+Declare  a static array. Create an object of the Vector class and call the calculateEuclideanNorm method passing the vector as argument. The method returns a float value.
+
+```
+
+
+int main() {
+int LEN = 3;
+int vectorOne[LEN] = {3,1,2};
+int vectorTwo[LEN] = {1,4,3};
+Vector v(LEN);
+int result = v.calculateEuclideanNorm(vectorOne, vectorTwo);
+
+    
+    return 0;
+}
+```
+### Example: Calculate the angle between two vectors
+Declare  two static arrays of same lenght. Create an object of the Vector class and call the calculateAngle method passing the vectors as argument. The method returns a float value.
+
+```
+
+
+int main() {
+int LEN = 3;
+int vectorOne[LEN] = {3,1,2};
+int vectorTwo[LEN] = {1,4,3};
+Vector v(LEN);
+int result = v.calculateAngle(vectorOne, vectorTwo);
+
+    
+    return 0;
+}
+```
